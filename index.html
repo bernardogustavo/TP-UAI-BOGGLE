@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Boggle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+</head>
+<body>
+    <div id="inicio">
+        <img src="./images/boggle-logo.png" alt="boggle-logo">
+        <form id="formInicio">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="tamanoTablero">Tamaño del Tablero:</label>
+            <select id="tamanoTablero" name="tamanoTablero">
+                <option value="4x4">4x4</option>
+                <option value="5x5">5x5</option>
+                <option value="6x6">6x6</option>
+            </select>            
+            <label for="tiempoJuego">Tiempo:</label>
+            <select id="tiempoJuego" name="tiempoJuego">
+                <option value="60">1 minuto</option>
+                <option value="120">2 minutos</option>
+                <option value="180">3 minutos</option>
+            </select>
+            
+            <button type="submit">Iniciar Juego</button>
+        </form>
+    </div>
+
+    <div id="juego" style="display: none;">
+        <img src="./images/boggle-logo.png" alt="boggle-logo">
+        <h2>Buena suerte <div id=""></div></h2>
+        <div id="tablero"></div>
+        <div id="info">
+            <div id="tiempoMezclar">
+                <div id="tiempoRestante">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>  
+                    <div id="contador"></div>
+                </div>
+                <div id="botonMezclar">       
+                    <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" id="reset-tablero" viewBox="0 0 32 32" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M16.08,2c-7.726,0 -14,6.273 -14,14c0,7.727 6.274,14 14,14c7.727,0 14,-6.273 14,-14c0,-7.727 -6.273,
+                        -14 -14,-14Zm4.283,7.609c2.238,1.385 3.728,3.822 3.728,6.6c0,4.317 -3.595,7.81 -8.011,7.81c-4.415,
+                        -0 -8.011,-3.493 -8.011,-7.81c0,-3.473 2.331,-6.415 5.54,-7.43c0.527,-0.167 0.819,-0.729 0.652,
+                        -1.255c-0.166,-0.527 -0.729,-0.819 -1.255,-0.652c-4.027,1.274 -6.937,4.978 -6.937,9.337c0,5.408 4.48,9.81 10.011,9.81c5.532,
+                        -0 10.011,-4.402 10.011,-9.81c0,-3.356 -1.724,-6.324 -4.355,-8.093l0.5,-0.128c0.535,-0.137 0.858,-0.682 0.721,-1.217c-0.136,
+                        -0.534 -0.681,-0.858 -1.216,-0.721l-3.165,0.809c-0.261,0.067 -0.484,0.236 -0.619,0.469c-0.134,0.233 -0.169,0.511 -0.096,
+                        0.77l0.848,3.019c0.149,0.532 0.702,0.842 1.233,0.692c0.531,-0.149 0.842,-0.701 0.692,-1.233l-0.271,-0.967Z"/>
+                    </svg>
+                </div>
+            </div>
+            <div id="contenedorInfo">
+                <div id="contenedorPalabraFormada">
+                    <p class="palabraFormada">Palabra formada: </p>
+                    <div id="contenedorPalabraBorrar">
+                        <div id="palabra">
+                        </div>
+                        <div id=tachoBasura>
+                            <svg version="1.1" id="borrar-seleccion" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 268.476 268.476" style="enable-background:new 0 0 268.476 268.476;" xml:space="preserve">
+                            <g id="Delete__x2F__Trash">
+                            <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M63.119,250.254c0,0,3.999,18.222,24.583,18.222h93.072
+                                c20.583,0,24.582-18.222,24.582-18.222l18.374-178.66H44.746L63.119,250.254z M170.035,98.442c0-4.943,4.006-8.949,8.949-8.949
+                                c4.943,0,8.95,4.006,8.95,8.949l-8.95,134.238c0,4.943-4.007,8.949-8.949,8.949c-4.942,0-8.949-4.007-8.949-8.949L170.035,98.442z
+                                M125.289,98.442c0-4.943,4.007-8.949,8.949-8.949c4.943,0,8.949,4.006,8.949,8.949v134.238c0,4.943-4.006,8.949-8.949,8.949
+                                c-4.943,0-8.949-4.007-8.949-8.949V98.442z M89.492,89.492c4.943,0,8.949,4.006,8.949,8.949l8.95,134.238
+                                c0,4.943-4.007,8.949-8.95,8.949c-4.942,0-8.949-4.007-8.949-8.949L80.543,98.442C80.543,93.499,84.55,89.492,89.492,89.492z
+                                M218.36,35.811h-39.376V17.899C178.984,4.322,174.593,0,161.086,0L107.39,0C95.001,0,89.492,6.001,89.492,17.899v17.913H50.116
+                                c-7.914,0-14.319,6.007-14.319,13.43c0,7.424,6.405,13.431,14.319,13.431H218.36c7.914,0,14.319-6.007,14.319-13.431
+                                C232.679,41.819,226.274,35.811,218.36,35.811z M161.086,35.811h-53.695l0.001-17.913h53.695V35.811z"/>
+                            </g>
+                            </svg>
+                        </div>    
+                    </div>
+                </div>
+                <div id="contenedorPuntos">    
+                    <p>Puntos: <div id="puntos">0</div>
+                </div>
+            </div>       
+            <button id="enviar-palabra">Enviar Palabra</button>                 
+        </div>
+        <ul id="listaPalabras"></ul>
+    </div>
+
+    <div id="modal-validacion" class="modal">
+        <div class="modal-content">
+            <span id="close-validacion" class="close">&times;</span>
+            <p id="modal-mensaje-validacion"></p>
+        </div>
+    </div>
+
+    <div id="modal-tiempo" class="modal">
+        <div class="modal-content">
+            <span id="close-tiempo" class="close">&times;</span>
+            <p id="modal-mensaje-tiempo"></p>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
