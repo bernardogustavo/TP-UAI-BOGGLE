@@ -313,6 +313,10 @@ window.addEventListener('resize', manejarBotonModal);
         var intervalId = setInterval(function() {
             tiempoRestante--;
             contador.textContent = tiempoRestante;
+            if (tiempoRestante <= 10) {
+                contador.style.color = "red";
+                contador.style.fontWeight = "bold";
+            }
             if (tiempoRestante <= 0) {
                 clearInterval(intervalId);
                 mostrarModalTiempo("¡Se acabó el tiempo!");
