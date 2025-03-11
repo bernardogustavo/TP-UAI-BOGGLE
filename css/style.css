@@ -73,13 +73,13 @@ main {
     padding: 8px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #cecece; /* Borde de los campos */
+    border: 1px solid #cecece;
 }
 
 #formInicio button {
     padding: 8px 16px;
     font-size: 16px;
-    background-color: #FF69B4; /* Color de botón */
+    background-color: #FF69B4;
     color: white;
     border: none;
     border-radius: 5px;
@@ -87,7 +87,7 @@ main {
 }
 
 #formInicio button:hover {
-    background-color: #FF1493; /* Color de botón en hover */
+    background-color: #FF1493;
 }
 
 #juego {
@@ -107,7 +107,7 @@ main {
     display: grid;
     max-width: 500px;
     gap: 2px;
-    background-color: #ffffff00; /* Color de fondo del tablero */
+    background-color: #ffffff00;
     justify-content: center;
     border-radius: 10px;
 }
@@ -120,7 +120,7 @@ main {
     font-size: 30px;
     cursor: pointer;
     user-select: none;
-    color: #ebfeff; /* Color de las letras */
+    color: #ebfeff;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -270,19 +270,48 @@ main {
     background-color: #FF1493;
 }
 
-#palabrasEncontradas {
+palabrasEncontradas {
     text-align: left;
     width: 100%;
     max-width: 600px;
+    background: rgba(235, 254, 255, 0.8); 
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 20px;
+}
+
+#palabrasEncontradas h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FF1493;
+    margin-bottom: 10px;
 }
 
 #palabrasEncontradas ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
 }
 
 #palabrasEncontradas ul li {
+    font-size: 18px;
+    color: #003aA2; 
     margin-bottom: 8px;
+    padding: 6px;
+    background-color: #ebfeff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#palabrasEncontradas ul li:hover {
+    background-color: #FF1493; 
+    color: white;
+    transform: scale(1.05); 
 }
 
 footer {
@@ -326,7 +355,7 @@ footer a:hover {
 }
 
 .close {
-    color: #FF69B4; /* Color de la X de cierre del modal */
+    color: #FF69B4;
     float: right;
     font-size: 30px;
     font-weight: bold;
@@ -335,7 +364,7 @@ footer a:hover {
 
 .close:hover,
 .close:focus {
-    color: #FF1493; /* Color en hover */
+    color: #FF1493;
     text-decoration: none;
     cursor: pointer;
 }
@@ -349,12 +378,12 @@ footer a:hover {
     font-size: 24px;
     cursor: pointer;
     user-select: none;
-    aspect-ratio: 1; /* Mantiene la proporción 1:1 */
-    transition: background-color 0.3s, color 0.3s; /* Para una transición suave */
+    aspect-ratio: 1;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .letra-seleccionada {
-    background-color:#FF1493; /* Color de letras seleccionadas */
+    background-color:#FF1493;
 }
 
 .letra-ultima-seleccionada {
@@ -362,5 +391,227 @@ footer a:hover {
 }
 
 .letra-posible-seleccion {
-    background-color: #FF69B4; /* Color de letras posibles de seleccionar */
+    background-color: #FF69B4;
+}
+
+#footerIndex {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #ebfeff;
+}
+
+#footerIndex a {
+    text-decoration: none;
+    color: #ebfeff;
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+}
+
+#footerIndex a:hover {
+    color: #003aA2;
+}
+
+#footerIndex svg:hover {
+    fill: #003aA2;
+}
+
+#footerIndex {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #ebfeff;
+}
+
+#footerIndex a {
+    text-decoration: none;
+    color: #ebfeff;
+}
+
+#footerIndex a:hover {
+    color: #003aA2;
+}
+
+#formularioContacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    background: rgb(235, 254, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#formCorreo label {
+    margin-bottom: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color:#000000;
+}
+
+#formularioContacto input,
+#formularioContacto textarea {
+    margin-bottom: 16px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #cecece; 
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+#formularioContacto button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#formularioContacto button:hover {
+    background-color: #FF1493;
+}
+
+/* Estilo para móviles */
+@media (max-width: 768px) {
+    #palabrasEncontradas {
+        display: none;
+    }
+
+    #btnModalPalabras {
+        border-style: none;
+        display: block;
+        font-size: 14px;
+        color: #ebfeff; 
+        margin-bottom: 8px;
+        padding: 8px 14px;
+        background-color: #4598da;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+    }
+
+    #btnModalPalabras:hover {
+        color: #ebfeff;
+        background-color: #FF69B4;
+    }
+
+    /* Estilo del modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #ebfeff;
+        color: #333;
+        font-size: 18px;
+        margin: 15% auto;
+        padding: 20px;
+        border: 5px solid #4598da;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .modal-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 10px; 
+    }
+
+    .modal-content ul li {
+        font-size: 18px;
+        color: #003aA2; 
+        margin-bottom: 8px;
+        padding: 6px;
+        background-color: #ebfeff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-content ul li:hover {
+        background-color: #FF1493;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .close {
+        color: #FF69B4;
+        font-size: 30px;
+        font-weight: bold;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #FF1493;
+    }
+
+    #tablero {
+        max-width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    #tablero div {
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    #info button {
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+
+    #contador {
+        font-size: 28px;
+    }
+
+    #tablero img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    #tablero {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #tablero div {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    #info button {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    #contador {
+        font-size: 24px;
+    }
 }

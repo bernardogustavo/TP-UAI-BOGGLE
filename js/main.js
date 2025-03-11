@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     puntos += palabra.length;
                     palabrasEncontradas.push(palabra);
                     console.log("Palabra válida y añadida:", palabra);
+                    actualizarListadoPalabras();
                 } else {
                     mostrarModalValidacion("Palabra inválida.");
                     if (puntos == 0) {
@@ -233,6 +234,58 @@ document.addEventListener("DOMContentLoaded", function() {
                 mostrarModalValidacion("Error al validar la palabra.");
             });
     }
+
+// Función para manejar la visibilidad del botón según el tamaño de la pantalla
+function manejarBotonModal() {
+    const btnModal = document.getElementById("btnModalPalabras");
+    if (window.innerWidth <= 768) {
+        btnModal.style.display = 'block';
+    } else {
+        btnModal.style.display = 'none';
+    }
+}
+
+// Función para actualizar el listado de palabras
+function actualizarListadoPalabras() {
+    const ul = document.getElementById("listaPalabras");
+    const modalLista = document.getElementById("modalListaPalabras");
+    const modal = document.getElementById("modalPalabras");
+
+    ul.innerHTML = '';
+    modalLista.innerHTML = '';
+
+    palabrasEncontradas.forEach((palabra) => {
+        const li = document.createElement('li');
+        li.textContent = palabra;
+        ul.appendChild(li);
+
+        const modalLi = document.createElement('li');
+        modalLi.textContent = palabra;
+        modalLista.appendChild(modalLi);
+    });
+
+    manejarBotonModal();
+
+    const btnModal = document.getElementById("btnModalPalabras");
+    btnModal.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    const span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+window.addEventListener('load', manejarBotonModal);
+
+window.addEventListener('resize', manejarBotonModal);
 
     function actualizarPuntos() {
         document.getElementById("puntos").textContent = puntos;
@@ -272,4 +325,20 @@ document.addEventListener("DOMContentLoaded", function() {
         modalMensajeTiempo.textContent = mensaje;
         modalTiempo.style.display = "block";
     }
+
+    document.getElementById("formCorreo").onsubmit = function(event) {
+
+        event.preventDefault();
+        
+        var nombre = document.getElementById("nombre").value;
+        var email = document.getElementById("email").value;
+        var mensaje = document.getElementById("mensaje").value;
+        
+        var mailtoLink = "mailto:example@example.com" + 
+                         "?subject=Invitación de " + encodeURIComponent(nombre) +
+                         "&body=" + encodeURIComponent("Nombre: " + nombre + "\nEmail: " + email + "\n\nMensaje:\n" + mensaje);
+        
+        window.location.href = mailtoLink;
+    };
+
 });
